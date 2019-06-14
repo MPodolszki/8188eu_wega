@@ -54,6 +54,14 @@ r8188eu-y :=				\
 
 modules:
 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+	
+clean: $(clean_more)
+	rm -fr *.mod.c *.mod *.o .*.cmd *.ko *~
+	rm -fr .tmp_versions
+	rm -fr Module.symvers ; rm -fr Module.markers ; rm -fr modules.order
+	cd core ; rm -fr *.mod.c *.mod *.o .*.cmd *.ko
+	cd hal ; rm -fr *.mod.c *.mod *.o .*.cmd *.ko
+	cd os_dep ; rm -fr *.mod.c *.mod *.o .*.cmd *.ko
 
 obj-$(CONFIG_R8188EU)	:= r8188eu.o
 

@@ -52,6 +52,9 @@ r8188eu-y :=				\
 		os_dep/usb_ops_linux.o	\
 		os_dep/xmit_linux.o
 
+modules:
+	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+
 obj-$(CONFIG_R8188EU)	:= r8188eu.o
 
 ccflags-y += -I$(srctree)/$(src)/include
